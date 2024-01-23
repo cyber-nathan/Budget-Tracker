@@ -1,0 +1,20 @@
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+        <button mat-raised-button style="width: 100%;">Add</button>
+        <hr>
+        <mat-selection-list #shoes [multiple]="false"  hideSingleSelectionIndicator [compareWith]="compareFunction" (selectionChange)="selectChange($event)">
+            @for (category of categories; track category.id) {
+              <mat-list-option [value]="category">
+                <div matListItemTitle>{{category.title}}</div>
+                <div matListItemLine>{{category.amountLeft | currency}}</div>
+                </mat-list-option>
+            }
+          </mat-selection-list>
+        <!-- <app-category *ngfor="let category of categories" [categoryInfo]="category"></app-category>  -->
+    </mat-sidenav>
+    <mat-sidenav-content> Main
+        <button (click)="sidenav.toggle()"> toggle</button>
+<app-budget-info-display [selectedCategory]="selectedCategory"></app-budget-info-display>
+    </mat-sidenav-content>
+    
+</mat-sidenav-container>

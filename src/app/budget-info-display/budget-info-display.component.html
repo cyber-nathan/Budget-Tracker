@@ -1,0 +1,31 @@
+<div class="grid-container">
+    <div class="grid-item">
+        <mat-card>
+            <mat-card-content>Budget: {{selectedCategory?.totalBudget}}</mat-card-content>
+        </mat-card>
+    </div>
+    <div class="grid-item">
+        <mat-card>
+            <mat-card-content>Remaining: {{selectedCategory?.amountLeft}}</mat-card-content>
+        </mat-card>
+    </div>
+    <div class="grid-item">
+        <mat-card>
+            <mat-card-content>Spent so far: {{selectedCategory?.amountSpent}}</mat-card-content>
+        </mat-card>
+    </div>
+
+    <div class="expenseList">
+        <mat-card>
+        <mat-card-content>
+        <mat-list role="list">
+            @for (expense of selectedCategory?.expense; track expense.id) {
+                <mat-list-item role="listitem">{{expense.expenseTitle}} {{expense.expenseAmount | currency}}</mat-list-item>
+            }
+          </mat-list>
+        </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+
+
